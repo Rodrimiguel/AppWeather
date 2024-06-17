@@ -1,2 +1,2 @@
-package com.istea.appdelclima.repository.modelos
+package com.istea.AppWeather.repository.modelos
 

@@ -1,4 +1,4 @@
-package com.istea.appdelclima.repository.modelos
+package com.istea.AppWeather.repository.modelos
 
 data class Clima (
     val temperatura: Int,

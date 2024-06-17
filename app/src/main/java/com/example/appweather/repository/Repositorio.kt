@@ -1,7 +1,7 @@
-package com.istea.appdelclima.repository
+package com.istea.AppWeather.repository
 
-import com.istea.appdelclima.repository.modelos.Ciudad
-import com.istea.appdelclima.repository.modelos.Clima2
+import com.istea.AppWeather.repository.modelos.Ciudad
+import com.istea.AppWeather.repository.modelos.Clima2
 
 interface Repositorio {
     suspend fun buscarCiudad(ciudad: String): List<Ciudad>

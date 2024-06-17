@@ -1,4 +1,4 @@
-package com.istea.appdelclima.repository
+package com.istea.AppWeatherTheme.repository
 
 import com.istea.appdelclima.repository.modelos.Ciudad
 import com.istea.appdelclima.repository.modelos.Clima2

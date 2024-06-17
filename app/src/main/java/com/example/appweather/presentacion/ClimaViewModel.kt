@@ -1,110 +1,76 @@
 package com.example.appweather.presentacion
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.istea.appdelclima.ui.theme.AppDelClimaTheme
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.createSavedStateHandle
+import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.istea.AppWeather.repository.Repositorio
+import com.istea.AppWeather.repository.RepositorioApi
+import com.istea.AppWeather.repository.modelos.Ciudad
+import kotlinx.coroutines.launch
 
-@Composable
-fun ClimaView(
-    modifier: Modifier = Modifier,
-    state: ClimaEstado,
-    onAction: (ClimaIntencion) -> Unit
+class ClimaViewModel(
+    val respositorio: Repositorio
+) : ViewModel() {
 
-) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(20.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        when (state) {
-            is ClimaEstado.Error -> ErrorView(mensaje = state.mensaje)
-            is ClimaEstado.Exitoso -> ClimaView(
-                ciudad = state.ciudad,
-                temperatura = state.temperatura,
-                descripcion = state.descripcion,
-                st = state.st
-            )
-
-            ClimaEstado.Vacio -> EmptyView()
-            ClimaEstado.Cargando -> EmptyView()
-        }
-
-        Spacer(modifier = Modifier.height(100.dp))
-
-        Button(onClick = { onAction(ClimaIntencion.BorrarTodo) }) {
-            Text(text = "Borrar todo")
-        }
-        Button(onClick = { onAction(ClimaIntencion.MostrarCaba) }) {
-            Text(text = "Mostrar Caba")
-        }
-        Button(onClick = { onAction(ClimaIntencion.MostrarCordoba) }) {
-            Text(text = "Mostrar Cordoba")
-        }
-        Button(onClick = { onAction(ClimaIntencion.MostrarError) }) {
-            Text(text = "Mostrar Error")
+    companion object {
+        val factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer {
+                val repositorio = RepositorioApi()
+                ClimaViewModel(repositorio)
+            }
         }
     }
-}
 
-@Composable
-fun EmptyView() {
-    Text(text = "No hay nada que mostrar")
-}
+    var uiState by mutableStateOf<ClimaEstado>(ClimaEstado.Vacio)
 
-@Composable
-fun ErrorView(mensaje: String) {
-    Text(text = mensaje)
-}
-
-@Composable
-fun ClimaView(ciudad: String, temperatura: Double, descripcion: String, st: Double) {
-    Column {
-        Text(text = ciudad, style = MaterialTheme.typography.titleMedium)
-        Text(text = "${temperatura}°", style = MaterialTheme.typography.titleLarge)
-        Text(text = descripcion, style = MaterialTheme.typography.bodyMedium)
-        Text(text = "sensacionTermica: ${st}°", style = MaterialTheme.typography.bodyMedium)
+    fun ejecutar(intencion: ClimaIntencion) { // viem model
+        when (intencion) {
+            ClimaIntencion.BorrarTodo -> borrarTodo()
+            ClimaIntencion.MostrarCaba -> mostrarCaba()
+            ClimaIntencion.MostrarCordoba -> mostrarCordoba()
+            ClimaIntencion.MostrarError -> mostrarError()
+        }
     }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun ClimaPreviewVacio() {
-    AppDelClimaTheme {
-        ClimaView(state = ClimaEstado.Vacio, onAction = {})
+    private fun mostrarError() {
+        uiState = ClimaEstado.Error("este es un error de mentiras")
     }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun ClimaPreviewError() {
-    AppDelClimaTheme {
-        ClimaView(state = ClimaEstado.Error("Se rompio todo"), onAction = {})
+    private fun borrarTodo() {
+        uiState = ClimaEstado.Vacio
     }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun ClimaPreviewExitoso() {
-    AppDelClimaTheme {
-        ClimaView(state = ClimaEstado.Exitoso(ciudad = "Mendoza", temperatura = 0.0), onAction = {})
+    private fun mostrarCaba() {
+
     }
+
+    private fun mostrarCordoba() {
+        ClimaEstado.Cargando
+        viewModelScope.launch {
+            val cordoba = Ciudad(name = "Cordoba", lat = -31.4135, lon = -64.18105, state = "Ar")
+            try {
+                val clima = respositorio.traerClima(cordoba)
+                ClimaEstado.Exitoso(
+                    ciudad = clima.name,
+                    temperatura = 10.0,//clima.main.temp,
+                    descripcion = "asd",//clima.weather.first().description,
+                    st = 10.2//clima.main.feelsLike,
+                )
+            } catch (exeption: Exception) {
+                ClimaEstado.Error("jojo")
+            }
+
+
+        }
+    }
+
 }
-
-
-
-
 
 
 
