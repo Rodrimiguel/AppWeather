@@ -1,6 +1,6 @@
-package com.example.appweather
+package com.istea.appdelclima.repository.modelos
 
-data class Clima(
+data class Clima (
     val temperatura: Int,
     val humedad: Float,
     val ciudad: String,
