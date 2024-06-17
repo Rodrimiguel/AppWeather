@@ -22,25 +22,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainPage("Android")
+                    MainPage()
                 }
             }
         }
     }
 }
 
-@Composable
-fun MainPage(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun MainPagePreview() {
-    AppWeatherTheme {
-        MainPage("Android")
-    }
-}
