@@ -58,18 +58,15 @@ class ClimaViewModel(
                 val clima = respositorio.traerClima(cordoba)
                 ClimaEstado.Exitoso(
                     ciudad = clima.name,
-                    temperatura = 10.0,//clima.main.temp,
-                    descripcion = "asd",//clima.weather.first().description,
-                    st = 10.2//clima.main.feelsLike,
+                    temperatura = 10.0,
+                    descripcion = "-|-",
+                    st = 10.2
                 )
             } catch (exeption: Exception) {
-                ClimaEstado.Error("jojo")
+                ClimaEstado.Error("-- Bug --")
             }
-
-
         }
     }
-
 }
 
 

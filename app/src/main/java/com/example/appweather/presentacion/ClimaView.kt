@@ -90,7 +90,9 @@ fun ClimaPreviewVacio() {
 @Composable
 fun ClimaPreviewError() {
     AppWeatherTheme {
-        ClimaView(state = ClimaEstado.Error("Se rompio todo"), onAction = {})
+        ClimaView(
+            state = ClimaEstado.Error("Función Descompuesta, llame al Administrador"),
+            onAction = {})
     }
 }
 
