@@ -1,19 +1,20 @@
 package com.istea.AppWeatherTheme.repository
 
-import com.istea.appdelclima.repository.modelos.Ciudad
-import com.istea.appdelclima.repository.modelos.Clima2
+import com.istea.AppWeather.repository.Repositorio
+import com.istea.AppWeather.repository.modelos.Ciudad
+import com.istea.AppWeather.repository.modelos.Clima2
 
 class RepositorioMock  : Repositorio {
     override suspend fun buscarCiudad(ciudad: String): List<Ciudad> {
-        val ciudad1 = Ciudad(name = "jojo",
+        val ciudad1 = Ciudad(name = "Okey",
             lat = -23.0,
             lon = -24.3,
             state = "Argentina")
-        val ciudad2 =Ciudad(name = "jojo",
+        val ciudad2 =Ciudad(name = "Okey",
             lat = -23.0,
             lon = -24.3,
             state = "Argentina")
-        val ciudad3 =Ciudad(name = "jojo",
+        val ciudad3 =Ciudad(name = "Okey",
             lat = -23.0,
             lon = -24.3,
             state = "Argentina")
