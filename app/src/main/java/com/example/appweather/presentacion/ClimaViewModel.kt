@@ -5,17 +5,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.istea.AppWeather.repository.Repositorio
-import com.istea.AppWeather.repository.RepositorioApi
-import com.istea.AppWeather.repository.modelos.Ciudad
+import com.example.AppWeather.repository.modelos.Ciudad
+import com.example.appweather.repository.Repositorio
+import com.example.appweather.repository.RepositorioApi
 import kotlinx.coroutines.launch
 
 class ClimaViewModel(
-    val respositorio: Repositorio
+    val repositorio: Repositorio
 ) : ViewModel() {
 
     companion object {
@@ -39,7 +38,7 @@ class ClimaViewModel(
     }
 
     private fun mostrarError() {
-        uiState = ClimaEstado.Error("este es un error de mentiras")
+        uiState = ClimaEstado.Error("Error, Consulta con el ADMINISTRADOR")
     }
 
     private fun borrarTodo() {
@@ -55,7 +54,7 @@ class ClimaViewModel(
         viewModelScope.launch {
             val cordoba = Ciudad(name = "Cordoba", lat = -31.4135, lon = -64.18105, state = "Ar")
             try {
-                val clima = respositorio.traerClima(cordoba)
+                val clima = repositorio.traerClima(cordoba)
                 ClimaEstado.Exitoso(
                     ciudad = clima.name,
                     temperatura = 10.0,

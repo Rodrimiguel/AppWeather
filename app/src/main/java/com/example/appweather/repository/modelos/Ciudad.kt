@@ -1,5 +1,4 @@
-package com.istea.AppWeather.repository.modelos
-
+package com.example.AppWeather.repository.modelos
 
 class Ciudad(
     val name: String,

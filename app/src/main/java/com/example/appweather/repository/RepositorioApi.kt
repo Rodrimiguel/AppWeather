@@ -1,7 +1,7 @@
-package com.istea.AppWeather.repository
+package com.example.appweather.repository
 
-import com.istea.AppWeather.repository.modelos.Ciudad
-import com.istea.AppWeather.repository.modelos.Clima2
+import com.example.AppWeather.repository.modelos.Ciudad
+import com.example.AppWeather.repository.modelos.Clima2
 
 class RepositorioApi : Repositorio{
     override suspend fun buscarCiudad(ciudad: String): List<Ciudad> {
@@ -12,8 +12,9 @@ class RepositorioApi : Repositorio{
         TODO("Not yet implemented")
     }
 
-    override suspend fun traerPronostico(ciudad: Ciudad): List<Clima2> {
+    override suspend fun traerPronostico(Ciudad: Ciudad): List<Clima2> {
         TODO("Not yet implemented")
     }
+
 
 }

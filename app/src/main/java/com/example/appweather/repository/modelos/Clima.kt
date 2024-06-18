@@ -1,7 +1,6 @@
-package com.istea.AppWeather.repository.modelos
+package com.example.AppWeather.repository.modelos
 
 
-//import kotlinx.serialization.Serializable
 
 class Clima(
     val temperatura: Int,
