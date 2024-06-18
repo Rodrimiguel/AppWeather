@@ -3,7 +3,12 @@ package com.example.appweather.repository
 import com.example.AppWeather.repository.modelos.Ciudad
 import com.example.AppWeather.repository.modelos.Clima2
 
+
 class RepositorioApi : Repositorio{
+
+    private val cliente = HttpCliente()
+
+
     override suspend fun buscarCiudad(ciudad: String): List<Ciudad> {
         TODO("Not yet implemented")
     }
