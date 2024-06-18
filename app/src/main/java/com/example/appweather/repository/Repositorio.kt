@@ -11,4 +11,5 @@ interface Repositorio {
 
     suspend fun traerPronostico(Ciudad: Ciudad): List<Clima2>
 
+
 }

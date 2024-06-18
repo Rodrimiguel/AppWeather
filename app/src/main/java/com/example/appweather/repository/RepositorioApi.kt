@@ -2,7 +2,7 @@ package com.example.appweather.repository
 
 import com.example.AppWeather.repository.modelos.Ciudad
 import com.example.AppWeather.repository.modelos.Clima2
-
+import io.ktor.client.HttpClient
 
 class RepositorioApi : Repositorio{
 
