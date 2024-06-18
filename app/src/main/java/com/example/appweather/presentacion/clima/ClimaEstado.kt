@@ -1,4 +1,4 @@
-package com.example.appweather.presentacion
+package com.example.appweather.presentacion.clima
 
 sealed class ClimaEstado {
     data class Exitoso(

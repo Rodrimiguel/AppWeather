@@ -1,4 +1,4 @@
-package com.example.appweather.presentacion
+package com.example.appweather.presentacion.clima
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -14,3 +14,4 @@ fun MainPage() {
     )
 }
 
+// Problemas View Model en CLima Page para corregir.

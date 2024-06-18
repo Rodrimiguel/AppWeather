@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.appweather.presentacion.MainPage
+import com.example.appweather.presentacion.clima.MainPage
 import com.example.appweather.ui.theme.AppWeatherTheme
 
 class MainActivity : ComponentActivity() {
