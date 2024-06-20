@@ -18,7 +18,7 @@ class ClimaViewModel(
 
     fun ejecutar(intencion: ClimaIntencion) { // viem model
         when (intencion) {
-            ClimaIntencion.actualizarClima -> traerClima()
+            ClimaIntencion.actualizar -> traerClima()
         }
     }
 
@@ -51,7 +51,7 @@ class ClimaViewModelFactory(
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ClimaViewModel::class.java)) {
-            return ClimaViewModel(repositorio, router, lat, lon, nombre) as T
+            return ClimaViewModel(repositorio,router,lat,lon,nombre) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
