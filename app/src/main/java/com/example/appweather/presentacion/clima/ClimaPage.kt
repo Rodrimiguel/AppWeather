@@ -4,8 +4,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.appweather.presentacion.clima.actual.ClimaView
 import com.example.appweather.presentacion.clima.actual.ClimaViewModel
 import com.example.appweather.presentacion.clima.actual.ClimaViewModelFactory
+import com.example.appweather.presentacion.clima.pronostico.PronosticoView
+import com.example.appweather.presentacion.clima.pronostico.PronosticoViewModel
+import com.example.appweather.presentacion.clima.pronostico.PronosticoViewModelFactory
 import com.example.appweather.repository.RepositorioApi
 import com.example.appweather.router.Enrutador
 
