@@ -15,13 +15,13 @@ import kotlinx.serialization.json.Json
 
 class RepositorioApi : Repositorio {
 
-        private val apikey = ""
+    private val apikey = ""
 
-        private val cliente = HttpClient(){
-            install(ContentNegotiation){
-                json(Json { ignoreUnknownKeys = true })
-            }
+    private val cliente = HttpClient() {
+        install(ContentNegotiation) {
+            json(Json { ignoreUnknownKeys = true })
         }
+    }
 
     override suspend fun buscarCiudad(ciudad: String): List<Ciudad> {
         val respuesta = cliente.get() {
@@ -32,8 +32,8 @@ class RepositorioApi : Repositorio {
         if (respuesta.status == HttpStatusCode.OK) {
             val ciudades = respuesta.body<List<Ciudad>>()
             return ciudades
-        }else{
-            throw Exception ()
+        } else {
+            throw Exception()
         }
     }
 
@@ -42,29 +42,30 @@ class RepositorioApi : Repositorio {
     }
 
     override suspend fun traerClima(ciudad: Ciudad): Clima {
-        val respuesta = cliente.get(){
+        val respuesta = cliente.get() {
             parameter("base", 00.00)
             parameter("lon", 00.00)
             parameter("units", "metric")
             parameter("appid", apikey)
         }
-        if (respuesta.status == HttpStatusCode.OK){
+        if (respuesta.status == HttpStatusCode.OK) {
             val clima = respuesta.body<Clima>()
             return clima
-        }else {
+        } else {
             throw Exception()
         }
     }
+
     override suspend fun traerPronostico(nombre: String): List<ListForecast> {
-        val respuesta = cliente.get(""){
-            parameter("q",nombre)
-            parameter("units","metric")
-            parameter("appid",apiKey)
+        val respuesta = cliente.get("") {
+            parameter("q", nombre)
+            parameter("units", "metric")
+            parameter("appid", apiKey)
         }
-        if (respuesta.status == HttpStatusCode.OK){
+        if (respuesta.status == HttpStatusCode.OK) {
             val forecast = respuesta.body<ForecastDTO>()
             return forecast.list
-        }else{
+        } else {
             throw Exception()
         }
     }
