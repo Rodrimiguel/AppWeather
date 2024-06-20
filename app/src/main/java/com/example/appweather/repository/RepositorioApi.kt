@@ -3,7 +3,7 @@ package com.example.appweather.repository
 import com.example.AppWeather.repository.modelos.Ciudad
 import com.example.AppWeather.repository.modelos.Clima
 import com.example.appweather.repository.modelos.ListForecast
-import com.example.AppWeather.repository.modelos.ForecastDTO
+//import com.example.AppWeather.repository.modelos.ForecastDTO
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -19,9 +19,11 @@ class RepositorioApi : Repositorio {
 
     private val cliente = HttpClient() {
         install(ContentNegotiation) {
-            json(Json { ignoreUnknownKeys = true })
+            json(Json { ignoreUnknownKeys = true
+            })
         }
     }
+
 
     override suspend fun buscarCiudad(ciudad: String): List<Ciudad> {
         val respuesta = cliente.get() {
@@ -38,10 +40,6 @@ class RepositorioApi : Repositorio {
     }
 
     override suspend fun traerClima(lat: Float, lon: Float): Clima {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun traerClima(ciudad: Ciudad): Clima {
         val respuesta = cliente.get() {
             parameter("base", 00.00)
             parameter("lon", 00.00)
@@ -63,7 +61,7 @@ class RepositorioApi : Repositorio {
             parameter("appid", apiKey)
         }
         if (respuesta.status == HttpStatusCode.OK) {
-            val forecast = respuesta.body<ForecastDTO>()
+            val forecast = respuesta.body<>()
             return forecast.list
         } else {
             throw Exception()
