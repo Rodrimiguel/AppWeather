@@ -3,9 +3,10 @@ package com.example.AppWeather.repository.modelos
 import kotlinx.serialization.Serializable
 
 @Serializable
-class Ciudad(
+data class Ciudad(
     val name: String,
-    val lat: Double,
-    val lon: Double,
-    val state: String,
+    val lat: Float,
+    val lon: Float,
+    val country: String,
+    val state: String = ""
 )
