@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.appweather.presentacion.ciudades.CiudadesPage
+import com.example.appweather.presentacion.clima.ClimaPage
 import com.example.appweather.router.Ruta
 
 @Composable
@@ -20,7 +21,7 @@ fun MainPage() {
         ) {
             CiudadesPage(navHostController)
         }
-        componsable(
+        composable(
             route =  "clima?lat={lat}&lon={lon}&nombre={nombre}",
             arguments = listOf(
                 navArgument("lat") { type= NavType.FloatType },
