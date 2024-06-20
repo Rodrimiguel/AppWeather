@@ -7,9 +7,9 @@ interface Repositorio {
 
     suspend fun buscarCiudad(ciudad: String): List<Ciudad>
 
-    suspend fun traerClima(ciudad: Ciudad): Clima2
+    suspend fun traerClima(ciudad: Ciudad): Clima
 
-    suspend fun traerPronostico(Ciudad: Ciudad): List<Clima2>
+    suspend fun traerPronostico(Ciudad: Ciudad): List<Clima>
 
 
 }
