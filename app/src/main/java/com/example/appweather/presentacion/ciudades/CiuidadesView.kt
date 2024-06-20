@@ -27,7 +27,7 @@ fun CiudadesView(
     Column(modifier = modifier) {
         TextField(
             value = value,
-            label = { Text(text = "buscar por nombre") },
+            label = { Text(text = "Buscar por nombre") },
             onValueChange = {
                 value = it
                 onAction(CiudadesIntencion.Buscar(value))

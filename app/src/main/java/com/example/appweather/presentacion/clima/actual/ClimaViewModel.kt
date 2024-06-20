@@ -18,7 +18,7 @@ class ClimaViewModel(
 
     fun ejecutar(intencion: ClimaIntencion) { // viem model
         when (intencion) {
-            ClimaIntencion.actualizar -> traerClima()
+            ClimaIntencion.actualizarClima -> traerClima()
         }
     }
 

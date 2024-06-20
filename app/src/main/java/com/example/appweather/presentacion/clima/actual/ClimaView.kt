@@ -24,7 +24,7 @@ fun ClimaView(
 
 ) {
     LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
-        onAction(ClimaIntencion.actualizar)
+        onAction(ClimaIntencion.actualizarClima)
     }
     Column(
         modifier = modifier
