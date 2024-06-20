@@ -3,7 +3,7 @@ package com.example.appweather.repository.modelos
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ForescastDTO(
+data class ForecastDTO (
     val cod: String,
     val message: Long,
     val cnt: Long,
