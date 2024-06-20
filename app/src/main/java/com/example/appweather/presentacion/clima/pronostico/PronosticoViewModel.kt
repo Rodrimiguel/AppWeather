@@ -34,7 +34,7 @@ class PronosticoViewModel(
                 }
                 uiState = PronosticoEstado.Exitoso(forecast)
             } catch (exception: Exception){
-                uiState = PronosticoEstado.Error(exception.localizedMessage ?: "error desconocido")
+                uiState = PronosticoEstado.Error(exception.localizedMessage ?: "Error desconocido")
             }
         }
     }

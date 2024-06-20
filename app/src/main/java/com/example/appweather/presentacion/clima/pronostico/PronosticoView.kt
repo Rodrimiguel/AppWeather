@@ -45,7 +45,7 @@ fun PronosticoView(
 
 @Composable
 fun EmptyView(){
-    Text(text = "No hay nada que mostrar")
+    Text(text = "NADA PARA MOSTRAR")
 }
 
 @Composable

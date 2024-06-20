@@ -39,7 +39,7 @@ class ClimaViewModel(
                     st = clima.main.feels_like,
                 )
             } catch (exception: Exception) {
-                uiState = ClimaEstado.Error(exception.localizedMessage ?: "error desconocido")
+                uiState = ClimaEstado.Error(exception.localizedMessage ?: "Error desconocido")
             }
         }
     }

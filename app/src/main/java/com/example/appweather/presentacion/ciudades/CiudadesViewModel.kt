@@ -39,7 +39,7 @@ class CiudadesViewModel(
                     uiState = CiudadesEstado.Resultado(ciudades)
                 }
             } catch (exeption: Exception){
-                uiState = CiudadesEstado.Error(exeption.message ?: "error desconocido")
+                uiState = CiudadesEstado.Error(exeption.message ?: "Error desconocido")
             }
         }
     }
