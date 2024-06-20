@@ -13,6 +13,7 @@ sealed class ClimaEstado {
     ) : ClimaEstado()
 
     data object Vacio : ClimaEstado()
+
     data object Cargando : ClimaEstado()
 
 }

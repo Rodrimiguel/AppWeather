@@ -1,32 +1,42 @@
 package com.example.appweather.repository
 
 import com.example.AppWeather.repository.modelos.Ciudad
-import com.example.AppWeather.repository.modelos.Clima2
+import com.example.AppWeather.repository.modelos.Clima
+import com.example.appweather.repository.modelos.ListForecast
 
 class RepositorioMock : Repositorio {
+
+    val cordoba = Ciudad(name = "Cordoba",
+        lat = -23.0f,
+        lon = -24.3f,
+        state = "Argentina")
+    val bsAs = Ciudad(name = "Buenos Aires",
+        lat = -23.0f,
+        lon = -24.3f,
+        state = "Argentina")
+    val laPlata = Ciudad(name = "La Plata",
+        lat = -23.0f,
+        lon = -24.3f,
+        state = "Argentina")
+
+    val ciudades = listOf(cordoba,bsAs,laPlata)
+
+
     override suspend fun buscarCiudad(ciudad: String): List<Ciudad> {
-        val ciudad1 = Ciudad(name = "OK",
-            lat = -23.0,
-            lon = -24.3,
-            state = "Argentina")
-        val ciudad2 =Ciudad(name = "OK",
-            lat = -23.0,
-            lon = -24.3,
-            state = "Argentina")
-        val ciudad3 =Ciudad(name = "OK",
-            lat = -23.0,
-            lon = -24.3,
-            state = "Argentina")
-        return listOf(ciudad1,ciudad2,ciudad3)
+        if (ciudad == "error"){
+            throw Exception()
+        }
+        return ciudades.filter { it.name.contains(ciudad,ignoreCase = true) }
     }
 
-    override suspend fun traerClima(ciudad: Ciudad): Clima2 {
+    override suspend fun traerClima(lat: Float, lon: Float): Clima {
         TODO("Not yet implemented")
     }
 
-    override suspend fun traerPronostico(Ciudad: Ciudad): List<Clima2> {
+    override suspend fun traerPronostico(nombre: String): List<ListForecast> {
         TODO("Not yet implemented")
     }
-
 
 }
+
+

@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,6 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
 import com.example.appweather.ui.theme.AppWeatherTheme
 
 @Composable
@@ -22,6 +23,9 @@ fun ClimaView(
     onAction: (ClimaIntencion) -> Unit
 
 ) {
+    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
+        onAction(ClimaIntencion.actualizarClima)
+    }
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -43,24 +47,17 @@ fun ClimaView(
 
         Spacer(modifier = Modifier.height(100.dp))
 
-        Button(onClick = { onAction(ClimaIntencion.BorrarTodo) }) {
-            Text(text = "Borrar todo")
-        }
-        Button(onClick = { onAction(ClimaIntencion.MostrarCaba) }) {
-            Text(text = "Mostrar Caba")
-        }
-        Button(onClick = { onAction(ClimaIntencion.MostrarCordoba) }) {
-            Text(text = "Mostrar Cordoba")
-        }
-        Button(onClick = { onAction(ClimaIntencion.MostrarError) }) {
-            Text(text = "Mostrar Error")
-        }
     }
 }
 
 @Composable
 fun EmptyView() {
     Text(text = "No hay nada que mostrar")
+}
+
+@Composable
+fun LoadingView(){
+    Text(text = "Cargando")
 }
 
 @Composable
