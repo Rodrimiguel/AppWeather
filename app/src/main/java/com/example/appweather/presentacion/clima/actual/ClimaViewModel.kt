@@ -8,10 +8,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.appweather.repository.Repositorio
 import com.example.appweather.router.Router
+
 import kotlinx.coroutines.launch
 
 class ClimaViewModel(
-    val repositorio: Repositorio
+    val repositorio: Repositorio,
+    val router: Router,
+    val lat : Float,
+    val lon : Float,
+    val nombre: String
 ) : ViewModel() {
 
     var uiState by mutableStateOf<ClimaEstado>(ClimaEstado.Vacio)
