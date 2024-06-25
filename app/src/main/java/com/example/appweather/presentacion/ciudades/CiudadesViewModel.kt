@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.AppWeather.repository.modelos.Ciudad
+import com.example.appweather.repository.modelos.Ciudad
 import com.example.appweather.repository.Repositorio
 import com.example.appweather.router.Router
 import com.example.appweather.router.Ruta

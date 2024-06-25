@@ -1,4 +1,4 @@
-package com.example.AppWeather.repository.modelos
+package com.example.appweather.repository.modelos
 
 import kotlinx.serialization.Serializable
 

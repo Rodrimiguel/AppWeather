@@ -1,6 +1,6 @@
 package com.example.appweather.presentacion.ciudades
 
-import com.example.AppWeather.repository.modelos.Ciudad
+import com.example.appweather.repository.modelos.Ciudad
 
 sealed class CiudadesEstado {
     data object Vacio : CiudadesEstado()

@@ -13,7 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.example.AppWeather.repository.modelos.Ciudad
+import com.example.appweather.repository.modelos.Ciudad
 
 
 @Composable

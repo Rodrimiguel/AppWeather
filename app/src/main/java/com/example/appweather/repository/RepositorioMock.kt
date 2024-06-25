@@ -1,7 +1,7 @@
 package com.example.appweather.repository
 
-import com.example.AppWeather.repository.modelos.Ciudad
-import com.example.AppWeather.repository.modelos.Clima
+import com.example.appweather.repository.modelos.Ciudad
+import com.example.appweather.repository.modelos.Clima
 import com.example.appweather.repository.modelos.ListForecast
 
 class RepositorioMock : Repositorio {
